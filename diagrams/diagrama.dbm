@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.3" use-changelog="false" last-position="179,0" last-zoom="0.75" max-obj-count="9"
+	 default-schema="public" default-owner="postgres">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="charla" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="900" y="440"/>
+	<column name="identificador" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="titulo" not-null="true">
+		<type name="varchar" length="128"/>
+	</column>
+	<column name="descripcion">
+		<type name="varchar" length="1024"/>
+	</column>
+	<constraint name="identificador_pk" type="pk-constr" table="public.charla">
+		<columns names="identificador" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="identificador_idioma" index="3"/>
+		<object name="identificador_patrocinador" index="4"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="idioma_fk" index="1"/>
+		<object name="patrocinador_fk" index="2"/>
+	</customidxs>
+</table>
+
+<table name="idioma" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1340" y="260"/>
+	<column name="identificador" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="8"/>
+	</column>
+	<constraint name="identificador_pk" type="pk-constr" table="public.idioma">
+		<columns names="identificador" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="video" layer="0" collapse-mode="2" max-obj-count="13" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="520" y="400"/>
+	<column name="identificador" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="visitas">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="traducido">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="destacado">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="duracion">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="contexto">
+		<type name="varchar" length="32"/>
+	</column>
+	<column name="hora">
+		<type name="time" length="0"/>
+	</column>
+	<column name="dia">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="mes">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="anio">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="identificador_pk" type="pk-constr" table="public.video">
+		<columns names="identificador" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="identificador_charla" index="6"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="charla_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="tema" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="580" y="740"/>
+	<column name="identificador" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nombre">
+		<type name="varchar" length="32"/>
+	</column>
+	<constraint name="identificador_pk" type="pk-constr" table="public.tema">
+		<columns names="identificador" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ponente" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1340" y="720"/>
+	<column name="identificador" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="32"/>
+	</column>
+	<column name="apellido" not-null="true">
+		<type name="varchar" length="32"/>
+	</column>
+	<column name="ha_publicado">
+		<type name="bool" length="0"/>
+	</column>
+	<constraint name="identificador_pk" type="pk-constr" table="public.ponente">
+		<columns names="identificador" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="patrocinador" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="940" y="260"/>
+	<column name="identificador" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="128"/>
+	</column>
+	<constraint name="identificador_pk" type="pk-constr" table="public.patrocinador">
+		<columns names="identificador" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="charla_ponente" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1320" y="460"/>
+
+	<customidxs object-type="column">
+		<object name="identificador_ponente" index="0"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="ponente_fk" index="0"/>
+	</customidxs>
+</table>
+
+<table name="charla_tema" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="940" y="720"/>
+</table>
+
+<relationship name="idioma_has_many_charla" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#00aaff"
+	 src-table="public.idioma"
+	 dst-table="public.charla"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="patrocinador_has_many_charla" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#00aaff"
+	 src-table="public.patrocinador"
+	 dst-table="public.charla"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="ponente_has_many_charla-ponente" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#00aaff"
+	 src-table="public.ponente"
+	 dst-table="public.charla_ponente"
+	 src-required="false" dst-required="false">
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+<relationship name="charla_has_many_video" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#00aaff"
+	 src-table="public.charla"
+	 dst-table="public.video"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="charla_has_many_charla_tema" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#00aaff"
+	 src-table="public.charla"
+	 dst-table="public.charla_tema"
+	 src-required="false" dst-required="false">
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+<relationship name="tema_has_many_charla_tema" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#00aaff"
+	 src-table="public.tema"
+	 dst-table="public.charla_tema"
+	 src-required="false" dst-required="false">
+	<constraint name="charla_tema_pk" type="pk-constr" alias="charla_tema_pk" protected="true" table="public.charla_tema">
+		</constraint>
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+<relationship name="charla_has_many_charla_ponente" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#00aaff"
+	 src-table="public.charla"
+	 dst-table="public.charla_ponente"
+	 src-required="false" dst-required="false">
+	<constraint name="charla_ponente_pk" type="pk-constr" alias="charla_ponente_pk" protected="true" table="public.charla_ponente">
+		</constraint>
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+</dbmodel>
