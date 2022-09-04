@@ -1,5 +1,4 @@
-# Ing_de_Datos
-
+# Ted_Talks_Analysis
 
 ## Explicación de los archivos de python:
 
